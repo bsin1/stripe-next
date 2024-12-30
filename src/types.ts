@@ -1,6 +1,5 @@
 import { NextRequest } from "next/server";
 import Stripe from "stripe";
-import { SubscribeModalProps } from "./components/SubscribeModal";
 
 export const DEFAULT_API_PATH = "/api/stripe";
 

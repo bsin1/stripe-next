@@ -1,18 +1,18 @@
-'use client'
+"use client";
 
-import { Fragment, useRef } from 'react'
-import { Dialog, Transition } from '@headlessui/react'
-import { IoClose } from 'react-icons/io5'
+import { Fragment, useRef } from "react";
+import { Dialog, Transition } from "@headlessui/react";
+import { IoClose } from "react-icons/io5";
 
 interface ModalProps {
-  children: React.ReactNode
-  open: boolean
-  title: string
-  handleClose: () => void
+  children: React.ReactNode;
+  open: boolean;
+  title: string;
+  handleClose: () => void;
 }
 
 export const Modal = ({ open, title, handleClose, children }: ModalProps) => {
-  const cancelButtonRef = useRef(null)
+  const cancelButtonRef = useRef(null);
 
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -62,5 +62,5 @@ export const Modal = ({ open, title, handleClose, children }: ModalProps) => {
         </div>
       </Dialog>
     </Transition.Root>
-  )
-}
+  );
+};
