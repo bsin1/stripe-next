@@ -19,7 +19,7 @@ interface StripeNext {
   ) => React.ReactNode;
 }
 
-export const StripeNext = (options: StripeNextOptions): StripeNext => ({
+export const CreateStripeNext = (options: StripeNextOptions): StripeNext => ({
   handlers: createStripeHandlers(options),
   BillingPortalButton: () => {
     return (
