@@ -44,8 +44,8 @@ const { handlers, BillingPortalButton, SubscribeModal } = StripeNext({
     return { id: "user_123", email: "test@test.com" };
   },
   onSubscriptionCreated: async (
+    userId: string,
     subscription: Stripe.Subscription,
-    clientRequestId: string,
   ): Promise<void> => {
     // required - add the subscription record to your database
   },

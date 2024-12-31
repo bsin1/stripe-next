@@ -29,7 +29,7 @@ export type StripeNextOptions = {
   getCurrentUser: () => Promise<{ id: string; email: string }>;
   getCurrentCustomerId: () => Promise<string>;
   onSubscriptionCreated: (
-    clientReferenceId: string,
+    userId: string,
     subscription: Stripe.Subscription,
   ) => Promise<void>;
   onSubscriptionDeleted: (subscription: Stripe.Subscription) => Promise<void>;
