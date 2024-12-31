@@ -2,11 +2,11 @@
 
 ## About
 
-`stripe-next` is a lightweight library designed to simplify the integration of Stripe into your Next.js application. \
+`stripe-next` is designed to simplify the integration of Stripe into your Next.js application. \
 \
-This package is currently intended to facilitate recurring subscriptions and provides essential components and utilities to streamline subscription management, billing portal access, and Stripe API interactions, making it a perfect companion for modern Next.js projects.
+This package is currently intended to facilitate recurring subscriptions and provides essential components and utilities to streamline subscription management, billing portal access, and Stripe API interactions.
 
-This library has been tested with Next.js version 14.2.
+This library has been tested with Next.js version 14.2
 
 ## Installation
 
@@ -68,7 +68,6 @@ const { handlers, BillingPortalButton, SubscribeModal } = StripeNext({
 Use the `BillingPortalButton` returned by StripeNext to access the Stripe billing portal:
 
 ```tsx
-import React from "react";
 import { BillingPortalButton } from "stripe-config";
 
 export default function BillingPortalPage() {
@@ -81,7 +80,7 @@ export default function BillingPortalPage() {
 Display a subscription modal to manage user subscriptions:
 
 ```tsx
-import React from "react";
+import { useState } from "react";
 import { SubscribeModal } from "stripe-config";
 
 export default function SubscribePage() {
@@ -108,9 +107,3 @@ import { handlers } from "stripe-config";
 
 export const { GET, POST } = handlers;
 ```
-
-##
-
-## Requirements
-
-- **Next.js**: Version 14.2 
