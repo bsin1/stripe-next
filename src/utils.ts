@@ -39,7 +39,7 @@ export const createStripeHandlers = (
           case "manage":
             return createBillingPortalUrl(req, options.getCurrentCustomerId);
           case "plans":
-            return getSubscriptionPlans();
+            return getSubscriptionPlans(options.productFilter);
           default:
             return Response.error();
         }
