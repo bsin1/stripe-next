@@ -13,9 +13,6 @@
     "isolatedModules": true,
     "jsx": "react-jsx",
     "incremental": true,
-    "paths": {
-      "@/*": ["./src/*"]
-    },
     "outDir": "./dist"
   },
   "include": ["**/*.ts", "**/*.tsx", "styled-system"],

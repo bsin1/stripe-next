@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { loadStripe } from "@stripe/stripe-js";
-import { PrimaryButton } from "@/components/ui/PrimaryButton";
+import { PrimaryButton } from "../components/ui/PrimaryButton";
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!,
