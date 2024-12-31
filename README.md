@@ -10,17 +10,22 @@ This library has been tested with Next.js version 14.2.
 
 ## Installation
 
-To install the package, use the following command:
-
 ```bash
 npm install stripe-next
 ```
 
 ## Usage
 
-### 1. Import and Initialize the Library
+### 1. Add Required env variables
 
-First, import and configure the `stripe-next` library:
+```env
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=""
+STRIPE_SECRET_KEY=""
+STRIPE_WEBHOOK_SECRET=""
+
+```
+
+### 2. Import and Initialize the Library
 
 ```ts
 // /stripe-config.ts
@@ -56,7 +61,7 @@ const { handlers, BillingPortalButton, SubscribeModal } = StripeNext({
 });
 ```
 
-### 2. Use the Provided Components
+### 3. Use the Provided Components
 
 #### Billing Portal Button
 
@@ -92,7 +97,7 @@ export default function SubscribePage() {
 }
 ```
 
-### 3. Use Handlers in API Routes
+### 4. Use Handlers in API Routes
 
 Integrate Stripe route handlers to manage server-side functionality:
 
