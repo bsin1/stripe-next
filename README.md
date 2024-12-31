@@ -34,6 +34,7 @@ import { StripeNext } from "stripe-next";
 
 const { handlers, BillingPortalButton, SubscribeModal } = StripeNext({
   apiBaseUrl: "/api/custom/path", // optional - default is /api/stripe
+  productFilter: "pro", // optional - filter products returned by the subscribe modal
   getCurrentCustomerId: async (): Promise<string> => {
     // required - return the current customer id
     return "cus_abc";
