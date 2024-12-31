@@ -1,6 +1,6 @@
 {
   "name": "stripe-next",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "scripts": {
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -37,7 +37,7 @@
     "dotenv": "^16.4.7",
     "stripe": "^17.5.0"
   },
-  "main": "dist/src/index.jsx",
+  "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
   "files": [
     "dist",
