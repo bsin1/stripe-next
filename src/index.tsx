@@ -10,8 +10,9 @@ import {
 import { BillingPortalButton } from './components/BillingPortalButton'
 import React from 'react'
 import { createStripeHandlers } from './utils'
+import StripeNamespace from 'stripe'
 
-export type * as Stripe from 'stripe'
+export { StripeNamespace as Stripe }
 
 interface StripeNext {
   handlers: StripeRouteHandlers
