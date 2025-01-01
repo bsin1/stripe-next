@@ -1,20 +1,20 @@
-"use client";
+'use client'
 
-import { Modal } from "../components/ui/Modal";
-import { SubscriptionPlans } from "./SubscriptionPlans";
+import { Modal } from '../components/ui/Modal'
+import { SubscriptionPlans } from './SubscriptionPlans'
 
 export interface SubscribeModalProps {
-  apiBaseUrl: string;
-  open: boolean;
-  title: string;
-  getCurrentUser: () => Promise<{ email: string; id: string }>;
-  handleClose: () => void;
+  apiBaseUrl: string
+  open: boolean
+  title: string
+  getCurrentUser: () => Promise<{ email: string; id: string }>
+  handleClose: () => void
 }
 
 export const SubscribeModal = ({
   apiBaseUrl,
   open,
-  title = "Subscribe",
+  title = 'Subscribe',
   getCurrentUser,
   handleClose,
 }: SubscribeModalProps) => {
@@ -25,5 +25,5 @@ export const SubscribeModal = ({
         getCurrentUser={getCurrentUser}
       />
     </Modal>
-  );
-};
+  )
+}

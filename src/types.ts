@@ -1,37 +1,38 @@
-import { NextRequest } from "next/server";
-import Stripe from "stripe";
+import { NextRequest } from 'next/server'
+import Stripe from 'stripe'
 
-export const DEFAULT_API_PATH = "/api/stripe";
+export const DEFAULT_API_PATH = '/api/stripe'
 
 export type StripeRouteHandlers = Record<
-  "GET" | "POST",
+  'GET' | 'POST',
   (req: NextRequest) => Promise<Response>
->;
+>
 
 export interface StripeRequest {
-  section: string;
-  action: string;
+  section: string
+  action: string
 }
 
 interface SectionActionMap {
-  [key: string]: string[];
+  [key: string]: string[]
 }
 
 export const SECTION_ACTION_MAP: SectionActionMap = {
-  checkout: ["create", "redirect"],
-  subscription: ["manage", "plans"],
+  checkout: ['create', 'redirect'],
+  subscription: ['manage', 'plans'],
   webhooks: [],
-};
+}
 
 export type StripeNextOptions = {
-  apiBaseUrl?: string;
-  productFilter?: string;
-  getCurrentUser: () => Promise<{ id: string; email: string }>;
-  getCurrentCustomerId: () => Promise<string>;
+  apiBaseUrl?: string
+  productFilter?: string
+  subscriptionSuccessRedirectPath: string
+  getCurrentUser: () => Promise<{ id: string; email: string }>
+  getCurrentCustomerId: () => Promise<string>
   onSubscriptionCreated: (
     userId: string,
     subscription: Stripe.Subscription,
-  ) => Promise<void>;
-  onSubscriptionDeleted: (subscription: Stripe.Subscription) => Promise<void>;
-  onSubscriptionUpdated: (subscription: Stripe.Subscription) => Promise<void>;
-};
+  ) => Promise<void>
+  onSubscriptionDeleted: (subscription: Stripe.Subscription) => Promise<void>
+  onSubscriptionUpdated: (subscription: Stripe.Subscription) => Promise<void>
+}

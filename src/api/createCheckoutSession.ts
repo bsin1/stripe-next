@@ -8,7 +8,6 @@ export const createCheckoutSession = async (
   getUser: () => Promise<{ email: string; id: string }>,
 ): Promise<Response> => {
   const { cancelRedirectUrl, priceId, successRedirectUrl } = await req.json()
-  console.log('CREATE CHECKOUT SESSION: ', cancelRedirectUrl)
 
   const { email, id } = await getUser()
 

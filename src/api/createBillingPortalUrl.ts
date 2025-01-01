@@ -9,8 +9,6 @@ export const createBillingPortalUrl = async (
 ): Promise<Response> => {
   const returnUrl = req.nextUrl.searchParams.get('return_url') ?? '/app'
 
-  console.log('BILLING PORTAL RETURN URL: ', returnUrl)
-
   const customerId = await retrieveCustomerId()
 
   const portalSession = await stripe.billingPortal.sessions.create({

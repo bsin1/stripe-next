@@ -15,8 +15,6 @@ export const handleWebhooks = async (
     subscription: Stripe.Subscription,
   ) => Promise<void>,
 ) => {
-  console.log('STRIPE WEBHOOK RECEIVED')
-
   const body = await request.text()
 
   const sig = request.headers.get('stripe-signature')
@@ -27,7 +25,6 @@ export const handleWebhooks = async (
       throw new Error('No stripe-signature provided')
     }
     event = stripe.webhooks.constructEvent(body, sig, endpointSecret)
-    console.log('STRIPE WEBHOOK EVENT TYPE: ', event.type)
   } catch (err) {
     console.error('Error verifying webhook signature:', err)
     return NextResponse.json(

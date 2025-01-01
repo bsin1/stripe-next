@@ -1,59 +1,57 @@
-"use client";
+'use client'
 
-import React, { useEffect, useState } from "react";
-import { loadStripe } from "@stripe/stripe-js";
-import { PrimaryButton } from "../components/ui/PrimaryButton";
+import React, { useEffect, useState } from 'react'
+import { loadStripe } from '@stripe/stripe-js'
+import { PrimaryButton } from '../components/ui/PrimaryButton'
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!,
-);
+)
 
 interface Props {
-  apiBaseUrl: string;
-  getCurrentUser: () => Promise<{ email: string; id: string }>;
+  apiBaseUrl: string
+  getCurrentUser: () => Promise<{ email: string; id: string }>
 }
 
 export const SubscriptionPlans = ({ apiBaseUrl, getCurrentUser }: Props) => {
-  const [plans, setPlans] = useState<any[]>([]);
+  const [plans, setPlans] = useState<any[]>([])
 
   useEffect(() => {
     const loadPlans = async () => {
-      const response = await fetch(`${apiBaseUrl}/subscription/plans`);
+      const response = await fetch(`${apiBaseUrl}/subscription/plans`)
 
-      const { data } = await response.json();
+      const { data } = await response.json()
 
-      setPlans(data);
-    };
-    loadPlans();
-  }, []);
+      setPlans(data)
+    }
+    loadPlans()
+  }, [])
 
   const handleSubscribe = async (priceId: string) => {
-    console.log("HANDLE SUBSCRIBE: ", priceId);
-
-    const url = new URL(window.location.href).origin;
+    const url = new URL(window.location.href).origin
 
     const response = await fetch(`${apiBaseUrl}/checkout/create`, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         priceId,
         cancelRedirectUrl: window.location.href,
         successRedirectUrl: `${url}${apiBaseUrl}/checkout/redirect`,
       }),
-    });
+    })
 
-    const { data } = await response.json();
+    const { data } = await response.json()
 
-    const stripe = await stripePromise;
+    const stripe = await stripePromise
 
-    const result = await stripe?.redirectToCheckout({ sessionId: data });
+    const result = await stripe?.redirectToCheckout({ sessionId: data })
 
     if (result?.error) {
-      console.error(result.error);
+      console.error(result.error)
     }
-  };
+  }
 
   return (
     <div className="bg-gray-50">
@@ -81,5 +79,5 @@ export const SubscriptionPlans = ({ apiBaseUrl, getCurrentUser }: Props) => {
         </div>
       ))}
     </div>
-  );
-};
+  )
+}
