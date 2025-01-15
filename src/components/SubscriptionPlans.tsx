@@ -10,10 +10,10 @@ const stripePromise = loadStripe(
 
 interface Props {
   apiBaseUrl: string
-  getCurrentUser: () => Promise<{ email: string; id: string }>
+  primaryColor?: string
 }
 
-export const SubscriptionPlans = ({ apiBaseUrl, getCurrentUser }: Props) => {
+export const SubscriptionPlans = ({ apiBaseUrl, primaryColor }: Props) => {
   const [plans, setPlans] = useState<any[]>([])
 
   useEffect(() => {
@@ -74,6 +74,7 @@ export const SubscriptionPlans = ({ apiBaseUrl, getCurrentUser }: Props) => {
           <PrimaryButton
             onClick={() => handleSubscribe(plan.id)}
             disabled={false}
+            primaryColor={primaryColor}
             title="Subscribe"
           />
         </div>

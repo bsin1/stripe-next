@@ -28,15 +28,16 @@ export const StripeNext = (options: StripeNextOptions): StripeNext => ({
     return (
       <BillingPortalButton
         apiBaseUrl={options.apiBaseUrl ?? DEFAULT_API_PATH}
+        primaryColor={options.primaryColor}
       />
     )
   },
   SubscribeModal: ({ handleClose, open, title }) => (
     <SubscribeModal
       apiBaseUrl={options.apiBaseUrl ?? DEFAULT_API_PATH}
-      getCurrentUser={options.getCurrentUser}
       handleClose={handleClose}
       open={open}
+      primaryColor={options.primaryColor}
       title={title}
     />
   ),

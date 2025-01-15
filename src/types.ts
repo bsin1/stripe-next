@@ -25,6 +25,7 @@ export const SECTION_ACTION_MAP: SectionActionMap = {
 
 export type StripeNextOptions = {
   apiBaseUrl?: string
+  primaryColor?: string
   productFilter?: string
   subscriptionSuccessRedirectPath: string
   getCurrentUser: () => Promise<{ id: string; email: string }>

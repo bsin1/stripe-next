@@ -6,24 +6,21 @@ import { SubscriptionPlans } from './SubscriptionPlans'
 export interface SubscribeModalProps {
   apiBaseUrl: string
   open: boolean
+  primaryColor?: string
   title: string
-  getCurrentUser: () => Promise<{ email: string; id: string }>
   handleClose: () => void
 }
 
 export const SubscribeModal = ({
   apiBaseUrl,
   open,
+  primaryColor,
   title = 'Subscribe',
-  getCurrentUser,
   handleClose,
 }: SubscribeModalProps) => {
   return (
     <Modal open={open} handleClose={handleClose} title={title}>
-      <SubscriptionPlans
-        apiBaseUrl={apiBaseUrl}
-        getCurrentUser={getCurrentUser}
-      />
+      <SubscriptionPlans apiBaseUrl={apiBaseUrl} primaryColor={primaryColor} />
     </Modal>
   )
 }
