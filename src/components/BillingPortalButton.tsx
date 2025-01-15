@@ -24,7 +24,7 @@ export const BillingPortalButton = ({ apiBaseUrl, primaryColor }: Props) => {
   }, [])
 
   return (
-    <div className="flex h-full w-full items-center justify-center">
+    <div className="flex items-center justify-center">
       {url ? (
         <a href={url}>
           <button
