@@ -28,8 +28,6 @@ export const SubscriptionPlans = ({ apiBaseUrl, primaryColor }: Props) => {
   }, [])
 
   const handleSubscribe = async (priceId: string) => {
-    const url = new URL(window.location.href).origin
-
     const response = await fetch(`${apiBaseUrl}/checkout/create`, {
       method: 'POST',
       headers: {
@@ -38,7 +36,7 @@ export const SubscriptionPlans = ({ apiBaseUrl, primaryColor }: Props) => {
       body: JSON.stringify({
         priceId,
         cancelRedirectUrl: window.location.href,
-        successRedirectUrl: `${url}${apiBaseUrl}/checkout/redirect`,
+        successRedirectUrl: window.location.href,
       }),
     })
 

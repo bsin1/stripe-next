@@ -27,7 +27,6 @@ export type StripeNextOptions = {
   apiBaseUrl?: string
   primaryColor?: string
   productFilter?: string
-  subscriptionSuccessRedirectPath: string
   getCurrentUser: () => Promise<{ id: string; email: string }>
   getCurrentCustomerId: () => Promise<string>
   onSubscriptionCreated: (

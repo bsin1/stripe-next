@@ -6,13 +6,13 @@ import Stripe from 'stripe'
 
 export const checkoutRedirect = async (
   req: NextRequest,
-  subscriptionSuccessRedirectPath: string,
   onSubscriptionSucccess: (
     userId: string,
     subscription: Stripe.Subscription,
   ) => Promise<any>,
 ): Promise<Response> => {
   const sessionId = req.nextUrl.searchParams.get('session_id')
+  const successRedirectUrl = req.nextUrl.searchParams.get('success_redirect')
 
   if (!sessionId) {
     return Response.error()
@@ -32,9 +32,9 @@ export const checkoutRedirect = async (
         )
       }
     }
-    const url = new URL(subscriptionSuccessRedirectPath, req.url)
+    // const url = new URL(successRedirectUrl, req.url)
 
-    return Response.redirect(url)
+    return Response.redirect(successRedirectUrl ?? req.nextUrl.origin)
   } catch (error) {
     console.log('CHECKOUT REDIRECT ERROR: ', error)
     return Response.error()

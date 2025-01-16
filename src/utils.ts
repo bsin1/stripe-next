@@ -27,13 +27,13 @@ export const createStripeHandlers = (
       case 'checkout': {
         switch (action) {
           case 'create':
-            return createCheckoutSession(req, options.getCurrentUser)
-          case 'redirect':
-            return checkoutRedirect(
+            return createCheckoutSession(
               req,
-              options.subscriptionSuccessRedirectPath,
-              options.onSubscriptionCreated,
+              options.apiBaseUrl ?? DEFAULT_API_PATH,
+              options.getCurrentUser,
             )
+          case 'redirect':
+            return checkoutRedirect(req, options.onSubscriptionCreated)
           default:
             return Response.error()
         }
