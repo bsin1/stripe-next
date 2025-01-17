@@ -5,9 +5,14 @@ import { useEffect, useState } from 'react'
 interface Props {
   apiBaseUrl: string
   primaryColor?: string
+  textColor?: string
 }
 
-export const BillingPortalButton = ({ apiBaseUrl, primaryColor }: Props) => {
+export const BillingPortalButton = ({
+  apiBaseUrl,
+  primaryColor,
+  textColor,
+}: Props) => {
   const [url, setUrl] = useState<string>()
 
   useEffect(() => {
@@ -29,7 +34,7 @@ export const BillingPortalButton = ({ apiBaseUrl, primaryColor }: Props) => {
         <a href={url}>
           <button
             className="rounded-lg bg-black px-4 py-2 text-white"
-            style={primaryColor ? { backgroundColor: primaryColor } : undefined}
+            style={{ backgroundColor: primaryColor, color: textColor }}
           >
             Manage Subscription
           </button>

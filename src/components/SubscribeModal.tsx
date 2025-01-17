@@ -5,6 +5,7 @@ import { SubscriptionPlans } from './SubscriptionPlans'
 
 export interface BillingPortalButtonProps {
   backgroundColor?: string
+  textColor?: string
 }
 
 export interface SubscribeModalProps {

@@ -25,11 +25,12 @@ interface StripeNext {
 
 export const StripeNext = (options: StripeNextOptions): StripeNext => ({
   handlers: createStripeHandlers(options),
-  BillingPortalButton: ({ backgroundColor }) => {
+  BillingPortalButton: ({ backgroundColor, textColor }) => {
     return (
       <BillingPortalButton
         apiBaseUrl={options.apiBaseUrl ?? DEFAULT_API_PATH}
         primaryColor={backgroundColor ?? options.primaryColor}
+        textColor={textColor}
       />
     )
   },
