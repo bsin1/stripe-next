@@ -3,6 +3,10 @@
 import { Modal } from '../components/ui/Modal'
 import { SubscriptionPlans } from './SubscriptionPlans'
 
+export interface BillingPortalButtonProps {
+  backgroundColor?: string
+}
+
 export interface SubscribeModalProps {
   apiBaseUrl: string
   open: boolean
