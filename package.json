@@ -1,6 +1,6 @@
 {
   "name": "stripe-next",
-  "version": "1.0.21",
+  "version": "1.0.22",
   "scripts": {
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"

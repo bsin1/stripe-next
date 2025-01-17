@@ -28,7 +28,7 @@ export const BillingPortalButton = ({ apiBaseUrl, primaryColor }: Props) => {
       {url ? (
         <a href={url}>
           <button
-            className="rounded-lg bg-black p-4 text-white"
+            className="rounded-lg bg-black px-4 py-2 text-white"
             style={primaryColor ? { backgroundColor: primaryColor } : undefined}
           >
             Manage Subscription
