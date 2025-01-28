@@ -11,12 +11,19 @@ import {
 import { BillingPortalButton } from './components/BillingPortalButton'
 import React from 'react'
 import { createStripeHandlers } from './utils'
-import StripeNamespace from 'stripe'
+import StripeNamespace, { Stripe } from 'stripe'
+import { stripe } from './stripe'
+import { updateSubscriptionQuantity } from './lib/stripe'
 
 export { StripeNamespace as Stripe }
 
 interface StripeNext {
   handlers: StripeRouteHandlers
+  updateSubscriptionQuantity: (
+    subId: string,
+    subItemId: string,
+    quantity: number,
+  ) => Promise<Stripe.Subscription>
   BillingPortalButton: (props: BillingPortalButtonProps) => React.ReactNode
   SubscribeModal: (
     props: Omit<SubscribeModalProps, 'apiBaseUrl'>,
@@ -25,6 +32,7 @@ interface StripeNext {
 
 export const StripeNext = (options: StripeNextOptions): StripeNext => ({
   handlers: createStripeHandlers(options),
+  updateSubscriptionQuantity: updateSubscriptionQuantity,
   BillingPortalButton: ({ backgroundColor, customerId, textColor }) => {
     return (
       <BillingPortalButton
