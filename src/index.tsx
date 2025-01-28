@@ -33,12 +33,18 @@ interface StripeNext {
 export const StripeNext = (options: StripeNextOptions): StripeNext => ({
   handlers: createStripeHandlers(options),
   updateSubscriptionQuantity: updateSubscriptionQuantity,
-  BillingPortalButton: ({ backgroundColor, customerId, textColor }) => {
+  BillingPortalButton: ({
+    backgroundColor,
+    customerId,
+    redirect,
+    textColor,
+  }) => {
     return (
       <BillingPortalButton
         apiBaseUrl={options.apiBaseUrl ?? DEFAULT_API_PATH}
         customerId={customerId}
         primaryColor={backgroundColor ?? options.primaryColor}
+        redirect={redirect}
         textColor={textColor}
       />
     )

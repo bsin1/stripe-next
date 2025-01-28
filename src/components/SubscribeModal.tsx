@@ -6,6 +6,7 @@ import { SubscriptionPlans } from './SubscriptionPlans'
 export interface BillingPortalButtonProps {
   backgroundColor?: string
   textColor?: string
+  redirect?: string // optional redirect URL on cancel
   customerId?: string //provide an override id for the customer to be managed
 }
 

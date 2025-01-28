@@ -7,12 +7,14 @@ interface Props {
   customerId?: string
   primaryColor?: string
   textColor?: string
+  redirect?: string
 }
 
 export const BillingPortalButton = ({
   apiBaseUrl,
   customerId,
   primaryColor,
+  redirect,
   textColor,
 }: Props) => {
   const [url, setUrl] = useState<string>()
@@ -20,7 +22,7 @@ export const BillingPortalButton = ({
   useEffect(() => {
     const getPortalUrl = async () => {
       const response = await fetch(
-        `${apiBaseUrl}/subscription/manage?return_url=${window.location.href}${customerId ? `&customer_id=${customerId}` : ''}`,
+        `${apiBaseUrl}/subscription/manage?return_url=${redirect ?? window.location.href}${customerId ? `&customer_id=${customerId}` : ''}`,
       )
 
       const { data } = await response.json()
