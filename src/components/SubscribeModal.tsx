@@ -16,6 +16,7 @@ export interface SubscribeModalProps {
   open: boolean
   primaryColor?: string
   quantity: number
+  redirect?: string //provide a redirect URL after subscription
   title: string
   handleClose: () => void
 }
@@ -27,6 +28,7 @@ export const SubscribeModal = ({
   open,
   primaryColor,
   quantity,
+  redirect,
   title = 'Subscribe',
   handleClose,
 }: SubscribeModalProps) => {

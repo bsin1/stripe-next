@@ -14,6 +14,7 @@ interface Props {
   clientId?: string
   primaryColor?: string
   quantity: number
+  redirect?: string
 }
 
 export const SubscriptionPlans = ({
@@ -22,6 +23,7 @@ export const SubscriptionPlans = ({
   clientId,
   primaryColor,
   quantity,
+  redirect,
 }: Props) => {
   const [plans, setPlans] = useState<any[]>([])
 
@@ -48,7 +50,7 @@ export const SubscriptionPlans = ({
         clientId,
         priceId,
         quantity,
-        successRedirectUrl: window.location.href,
+        successRedirectUrl: redirect ?? window.location.href,
       }),
     })
 

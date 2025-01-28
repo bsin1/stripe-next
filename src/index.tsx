@@ -41,6 +41,7 @@ export const StripeNext = (options: StripeNextOptions): StripeNext => ({
     clientId,
     open,
     quantity,
+    redirect,
     title,
   }) => (
     <SubscribeModal
@@ -51,6 +52,7 @@ export const StripeNext = (options: StripeNextOptions): StripeNext => ({
       open={open}
       primaryColor={options.primaryColor}
       quantity={quantity}
+      redirect={redirect}
       title={title}
     />
   ),
