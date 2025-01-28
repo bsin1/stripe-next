@@ -19,27 +19,38 @@ interface StripeNext {
   handlers: StripeRouteHandlers
   BillingPortalButton: (props: BillingPortalButtonProps) => React.ReactNode
   SubscribeModal: (
-    props: Omit<SubscribeModalProps, 'getCurrentUser' | 'apiBaseUrl'>,
+    props: Omit<SubscribeModalProps, 'apiBaseUrl'>,
   ) => React.ReactNode
 }
 
 export const StripeNext = (options: StripeNextOptions): StripeNext => ({
   handlers: createStripeHandlers(options),
-  BillingPortalButton: ({ backgroundColor, textColor }) => {
+  BillingPortalButton: ({ backgroundColor, customerId, textColor }) => {
     return (
       <BillingPortalButton
         apiBaseUrl={options.apiBaseUrl ?? DEFAULT_API_PATH}
+        customerId={customerId}
         primaryColor={backgroundColor ?? options.primaryColor}
         textColor={textColor}
       />
     )
   },
-  SubscribeModal: ({ handleClose, open, title }) => (
+  SubscribeModal: ({
+    handleClose,
+    clientEmail,
+    clientId,
+    open,
+    quantity,
+    title,
+  }) => (
     <SubscribeModal
       apiBaseUrl={options.apiBaseUrl ?? DEFAULT_API_PATH}
+      clientEmail={clientEmail}
+      clientId={clientId}
       handleClose={handleClose}
       open={open}
       primaryColor={options.primaryColor}
+      quantity={quantity}
       title={title}
     />
   ),

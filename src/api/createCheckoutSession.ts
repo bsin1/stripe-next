@@ -6,9 +6,16 @@ import { stripe } from '../stripe'
 export const createCheckoutSession = async (
   req: NextRequest,
   apiBaseUrl: string,
-  getUser: () => Promise<{ email: string; id: string }>,
+  getUser?: () => Promise<{ email: string; id: string }>,
 ): Promise<Response> => {
-  const { cancelRedirectUrl, priceId, successRedirectUrl } = await req.json()
+  const {
+    cancelRedirectUrl,
+    priceId,
+    successRedirectUrl,
+    clientId,
+    clientEmail,
+    quantity,
+  } = await req.json()
 
   // Use req.nextUrl.protocol for reliable protocol detection
   const protocol = req.nextUrl.protocol // Should return 'http:' or 'https:'
@@ -16,7 +23,7 @@ export const createCheckoutSession = async (
 
   const checkoutRedirectUrl = `${protocol}//${host}${apiBaseUrl}/checkout/redirect`
 
-  const { email, id } = await getUser()
+  const userData = await getUser?.()
 
   const checkoutSession = await stripe.checkout.sessions.create({
     mode: 'subscription',
@@ -24,13 +31,13 @@ export const createCheckoutSession = async (
     line_items: [
       {
         price: priceId,
-        quantity: 1,
+        quantity: quantity,
       },
     ],
     success_url: `${checkoutRedirectUrl}?session_id={CHECKOUT_SESSION_ID}&success_redirect=${successRedirectUrl}`,
     cancel_url: cancelRedirectUrl,
-    client_reference_id: id,
-    customer_email: email,
+    client_reference_id: clientId ?? userData?.id,
+    customer_email: clientEmail ?? userData?.email,
   })
 
   return Response.json({ data: checkoutSession.id })

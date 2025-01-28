@@ -36,15 +36,15 @@ const { handlers, BillingPortalButton, SubscribeModal } = StripeNext({
   apiBaseUrl: "/api/custom/path", // optional - default is /api/stripe
   productFilter: "pro", // optional - filter products returned by the subscribe modal
   getCurrentCustomerId: async (): Promise<string> => {
-    // required - return the current customer id
+    // optional - return the current customer id
     return "cus_abc";
   },
   getCurrentUser: async (): Promise<{ id: string; email: string }> => {
-    // required - return the current user details
+    // optional - return the current user details
     return { id: "user_123", email: "test@test.com" };
   },
   onSubscriptionCreated: async (
-    userId: string,
+    clientId: string,
     subscription: Stripe.Subscription,
   ): Promise<void> => {
     // required - add the subscription record to your database

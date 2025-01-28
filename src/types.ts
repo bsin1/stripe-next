@@ -27,10 +27,10 @@ export type StripeNextOptions = {
   apiBaseUrl?: string
   primaryColor?: string
   productFilter?: string
-  getCurrentUser: () => Promise<{ id: string; email: string }>
-  getCurrentCustomerId: () => Promise<string>
+  getCurrentUser?: () => Promise<{ id: string; email: string }>
+  getCurrentCustomerId?: () => Promise<string>
   onSubscriptionCreated: (
-    userId: string,
+    clientId: string,
     subscription: Stripe.Subscription,
   ) => Promise<void>
   onSubscriptionDeleted: (subscription: Stripe.Subscription) => Promise<void>

@@ -4,12 +4,14 @@ import { useEffect, useState } from 'react'
 
 interface Props {
   apiBaseUrl: string
+  customerId?: string
   primaryColor?: string
   textColor?: string
 }
 
 export const BillingPortalButton = ({
   apiBaseUrl,
+  customerId,
   primaryColor,
   textColor,
 }: Props) => {
@@ -18,7 +20,7 @@ export const BillingPortalButton = ({
   useEffect(() => {
     const getPortalUrl = async () => {
       const response = await fetch(
-        `${apiBaseUrl}/subscription/manage?return_url=${window.location.href}`,
+        `${apiBaseUrl}/subscription/manage?return_url=${window.location.href}${customerId ? `&customer_id=${customerId}` : ''}`,
       )
 
       const { data } = await response.json()

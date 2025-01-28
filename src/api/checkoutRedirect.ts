@@ -7,7 +7,7 @@ import Stripe from 'stripe'
 export const checkoutRedirect = async (
   req: NextRequest,
   onSubscriptionSucccess: (
-    userId: string,
+    clientId: string,
     subscription: Stripe.Subscription,
   ) => Promise<any>,
 ): Promise<Response> => {

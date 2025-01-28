@@ -10,10 +10,19 @@ const stripePromise = loadStripe(
 
 interface Props {
   apiBaseUrl: string
+  clientEmail?: string
+  clientId?: string
   primaryColor?: string
+  quantity: number
 }
 
-export const SubscriptionPlans = ({ apiBaseUrl, primaryColor }: Props) => {
+export const SubscriptionPlans = ({
+  apiBaseUrl,
+  clientEmail,
+  clientId,
+  primaryColor,
+  quantity,
+}: Props) => {
   const [plans, setPlans] = useState<any[]>([])
 
   useEffect(() => {
@@ -34,8 +43,11 @@ export const SubscriptionPlans = ({ apiBaseUrl, primaryColor }: Props) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        priceId,
         cancelRedirectUrl: window.location.href,
+        clientEmail,
+        clientId,
+        priceId,
+        quantity,
         successRedirectUrl: window.location.href,
       }),
     })
