@@ -40,6 +40,7 @@ export const SubscribeModal = ({
         clientId={clientId}
         primaryColor={primaryColor}
         quantity={quantity}
+        redirect={redirect}
       />
     </Modal>
   )
