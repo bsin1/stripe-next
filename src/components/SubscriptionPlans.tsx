@@ -45,7 +45,7 @@ export const SubscriptionPlans = ({
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        cancelRedirectUrl: window.location.href,
+        cancelRedirectUrl: redirect ?? window.location.href,
         clientEmail,
         clientId,
         priceId,
