@@ -1,3 +1,5 @@
+'use server'
+
 import { stripe } from '../stripe'
 
 export const updateSubscriptionQuantity = async (
