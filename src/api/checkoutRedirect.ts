@@ -1,5 +1,3 @@
-'use server'
-
 import { NextRequest } from 'next/server'
 import { stripe } from '../stripe'
 import Stripe from 'stripe'

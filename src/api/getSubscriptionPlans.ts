@@ -1,25 +1,23 @@
-"use server";
-
-import Stripe from "stripe";
-import { stripe } from "../stripe";
+import Stripe from 'stripe'
+import { stripe } from '../stripe'
 
 export const getSubscriptionPlans = async (
   productFilter?: string,
 ): Promise<Response> => {
   const prices = await stripe.prices.list({
-    expand: ["data.product"],
+    expand: ['data.product'],
     active: true,
-    type: "recurring",
-  });
+    type: 'recurring',
+  })
 
-  let data = prices.data;
+  let data = prices.data
 
   if (productFilter) {
     data = prices.data.filter((price) =>
       (price.product as Stripe.Product).name
         .toLowerCase()
         .includes(productFilter.toLowerCase()),
-    );
+    )
   }
 
   return Response.json({
@@ -31,5 +29,5 @@ export const getSubscriptionPlans = async (
       interval: price.recurring?.interval,
       price_id: price.id,
     })),
-  });
-};
+  })
+}
